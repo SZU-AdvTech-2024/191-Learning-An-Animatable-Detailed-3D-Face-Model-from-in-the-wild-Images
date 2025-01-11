@@ -1,0 +1,25 @@
+# '''
+# second step:
+# train the coarse model for 1.5 epochs with a batch size of 32, with 4 images per subject
+
+
+# Time:
+# around 15min/1000iterations
+# in total, needs around 
+output_dir: './train_data/training/DECA_release_version/coarse'
+pretrained_modelpath: './train_data/deca_model.tar'
+dataset:
+  batch_size: 1
+  K: 1
+  training_data: [ 'vggface2' ]
+train:
+  resume: True
+  max_epochs: 10
+  max_steps: 200000
+  log_steps: 10
+  vis_steps: 500
+  checkpoint_steps: 1000
+  val_steps: 500
+  eval_steps: 1000
+
+# python main_train_deca_release.py --cfg configs/release_version/deca_coarse.yml

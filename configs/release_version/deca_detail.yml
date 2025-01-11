@@ -1,0 +1,29 @@
+# '''
+# detail:
+# This is followed by training the detail model (i.e. 𝐸𝑑
+# ) on VGGFace2 and VoxCeleb2 with a batch size of 6, with
+
+# why:
+# '''
+# pretrained_modelpath: '/ps/scratch/yfeng/Data/Projects-data/DECA-training/training/DECA_SIGGRAPH/pretrain/model.tar'
+output_dir: './train_data/training/DECA_release_version/detail'
+pretrained_modelpath: './train_data/deca_model.tar'
+dataset:
+  batch_size: 2
+  K: 3
+  training_data: [ 'vggface2']
+train:
+  train_detail: True
+  resume: True
+  max_epochs: 10
+  max_steps: 1000000
+  log_steps: 10
+  vis_steps: 500
+  checkpoint_steps: 9
+  val_steps: 500
+  eval_steps: 1000
+loss:
+  useSeg: False
+#model:
+#  extract_tex: False
+# python main_train_deca_release.py --cfg configs/release_version/deca_coarse.yml
